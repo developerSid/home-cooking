@@ -1,0 +1,23 @@
+{
+  "tasks": [
+    {
+      "name": "Run csharpier",
+      "command": "dotnet",
+      "args": [ "csharpier", "" ],
+      "include": [ "**/*.cs" ]
+    },
+    {
+      "name": "Run fantomas",
+      "command": "dotnet",
+      "args": [ "fantomas", "" ],
+      "include": [ "**/*.fs", "**/*.fsx" ]
+    },
+    {
+      "name": "build-check",
+      "command": "dotnet",
+      "group": "pre-push",
+      "args": ["build", "/warnaserror", "--no-restore", "--verbosity", "quiet"]
+    }
+  ]
+}
+
