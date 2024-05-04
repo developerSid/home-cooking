@@ -5,11 +5,15 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <LangVersion>8</LangVersion>
     <WarningsAsErrors>FS0025</WarningsAsErrors>
-    <RootNameSpace>Imod.House.Core</RootNameSpace>
+    <RootNameSpace>House.Imod.Cooking.Core</RootNameSpace>
     <NoWarn>FS0104</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Library.fs" />
+    <Compile Include="Core.fs" />
+    <Compile Include="Text.fs" />
+    <Compile Include="BaseText.fs" />
+    <Compile Include="Matcher.fs" />
+    <Compile Include="Identity.fs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Protocol.Ext\Protocl.Ext.csproj" />
@@ -18,5 +22,5 @@
     <Exec Command="dotnet tool restore" StandardOutputImportance="Low" StandardErrorImportance="High" />
     <Exec Command="dotnet husky install" StandardOutputImportance="Low" StandardErrorImportance="High" WorkingDirectory=".." />
   </Target>
-  <Import Project=".paket\Paket.Restore.targets" />
+  <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>

@@ -4,22 +4,27 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <RootNameSpace>Imod.House.Protocol</RootNameSpace>
+    <RootNameSpace>House.Imod.Cooking.Protocol</RootNameSpace>
     <LangVersion>12</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Protobuf Include="Protos\*.proto"> <!-- I put my proto files in the Protos directory and I want to include all .proto files -->
-      <GrpcServices>None</GrpcServices> <!-- The Protocol definitions here are for message passing and storage, so we don't need to generate any Service endpoints -->
-      <Access>Public</Access> <!--  Make the classes public -->
+    <Protobuf Include="Protos\*.proto">
+      <!-- I put my proto files in the Protos directory and I want to include all .proto files -->
+      <GrpcServices>None</GrpcServices>
+      <!-- The Protocol definitions here are for message passing and storage, so we don't need to generate any Service endpoints -->
+      <Access>Public</Access>
+      <!--  Make the classes public -->
       <ProtoCompile>True</ProtoCompile>
       <ProtoRoot>Protos</ProtoRoot>
-      <CompileOutputs>False</CompileOutputs> <!-- This has to be false or the compiler does stupid things -->
-      <OutputDir>Generated/</OutputDir> <!-- Put the generated C# code in a directory called Generated -->
+      <CompileOutputs>False</CompileOutputs>
+      <!-- This has to be false or the compiler does stupid things -->
+      <OutputDir>Generated/</OutputDir>
+      <!-- Put the generated C# code in a directory called Generated -->
       <Generator>MSBuild:Compile</Generator>
     </Protobuf>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Generated\" />
   </ItemGroup>
-  <Import Project=".paket\Paket.Restore.targets" />
+  <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>

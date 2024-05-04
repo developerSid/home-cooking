@@ -1,9 +1,7 @@
-module Test
+module House.Imod.Cooking.Test
 
-open NUnit.Framework
+open Xunit
+open FsUnit.Xunit
 
-[<SetUp>]
-let Setup () = ()
-
-[<Test>]
-let Test1 () = Assert.Pass()
+[<Fact>]
+let Test1 () = true

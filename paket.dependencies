@@ -1,0 +1,20 @@
+source https://api.nuget.org/v3/index.json
+
+storage: none
+nuget Bogus
+nuget coverlet.collector
+nuget FSharp.SystemTextJson
+nuget FSharpPlus
+nuget FSharpx.Collections
+nuget FSharpx.Extras
+nuget FsToolkit.ErrorHandling
+nuget FsToolkit.ErrorHandling.TaskResult
+nuget FsUnit.xUnit
+nuget Google.Protobuf
+nuget Grpc.Tools
+nuget Konscious.Security.Cryptography.Argon2
+nuget KsuidDotNet
+nuget Microsoft.Extensions.Primitives
+nuget Microsoft.NET.Test.Sdk
+nuget SimpleBase
+nuget xunit.runner.visualstudio

@@ -1,0 +1,106 @@
+name: home-cooking
+networks:
+  cooknet:
+    name: cooknet
+volumes:
+  cookdb_data:
+
+services:
+  service_router:
+    image: docker.io/traefik:v2.11.2
+    container_name: service_router
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--entrypoints.web.address=:80"
+      - "--log.level=DEBUG"
+    ports:
+      - "80:80"
+      - "8080:8080"
+    networks:
+      - cooknet
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: "unless-stopped"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+  cookdb:
+    image: docker.io/postgres:16.2-bookworm
+    container_name: cookdb
+    networks:
+      - cooknet
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=postgres
+    restart: "no"
+    volumes:
+      - ./.local/etc/postgresql/postgresql.conf:/etc/postgresql/postgresql.conf
+      - cookdb_data:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready --host=cookdb -U postgres -d postgres --port=5432",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 15
+    command:
+      - "-c"
+      - "config_file=/etc/postgresql/postgresql.conf"
+  cookdb_setup:
+    image: docker.io/postgres:16.2-bookworm
+    container_name: cookdb_setup
+    networks:
+      - cooknet
+    depends_on:
+      - cookdb
+    environment:
+      - PGHOST=cookdb
+      - PGUSER=postgres
+      - PGPASSWORD=password
+      - PGDATABASE=postgres
+      - DATABASE_NAME=cookdb
+      - DATABASE_USERNAME=cooker
+      - DATABASE_USER_PASSWORD=cooker
+    volumes:
+      - ./.local/opt/cookdb/setup-db.sh:/tmp/bin/setup-db.sh
+    command: [ "bash", "/tmp/bin/setup-db.sh" ]
+  cookdbpsql:
+    build:
+      context: .local/opt/psql
+      dockerfile: psql.dockerfile
+    container_name: cookdbpsql
+    networks:
+      - cooknet
+    profiles:
+      - tools
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+    environment:
+      - PGHOST=cookdb
+      - PGDATABASE=cookdb
+      - PGUSER=homeuser
+      - PGPASSWORD=homepassword
+    stdin_open: true
+    tty: true
+    entrypoint: [ "psql" ]

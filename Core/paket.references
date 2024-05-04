@@ -1,8 +1,9 @@
-FSharp.Core
 FsToolkit.ErrorHandling
 FSharpx.Collections
 FSharpx.Extras
+Konscious.Security.Cryptography.Argon2
 FsToolkit.ErrorHandling.TaskResult
 FSharpPlus
 Microsoft.Extensions.Primitives
+SimpleBase
 KsuidDotNet

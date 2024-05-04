@@ -2,7 +2,7 @@ syntax = "proto3";
 
 option optimize_for = SPEED;
 
-package sign.here.please.protocol;
+package house.imod.protocol;
 
 // import "google/protobuf/wrappers.proto"; // use wrappers from this import for numeric values that need to be nullable
 // https://learn.microsoft.com/en-us/dotnet/architecture/grpc-for-wcf-developers/protobuf-data-typesc
