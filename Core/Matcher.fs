@@ -5,11 +5,9 @@ open System.Text.RegularExpressions
 type Matcher = private Matcher of Regex
 
 type MatchResult =
-  {
-    Groups: GroupCollection
+  { Groups: GroupCollection
     Captures: CaptureCollection
-    Value: Text
-  }
+    Value: Text }
 
 module Matcher =
 
@@ -23,11 +21,9 @@ module Matcher =
 
     if result.Success then
       Some
-        {
-          Groups = result.Groups
+        { Groups = result.Groups
           Captures = result.Captures
-          Value = txt
-        }
+          Value = txt }
     else
       None
 
@@ -45,11 +41,9 @@ module Matcher =
     if result.Success then
       Some(
         doIfMatches
-          {
-            Groups = result.Groups
+          { Groups = result.Groups
             Captures = result.Captures
-            Value = txt
-          }
+            Value = txt }
       )
     else
       None

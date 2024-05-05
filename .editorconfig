@@ -9,17 +9,17 @@ indent_style = space
 indent_size = 2
 
 # C# files
-[*.cs]
+[*.{cs,fs}]
 
 #### Core EditorConfig Options ####
 
 # Indentation and spacing
-indent_size = 4
-tab_width = 4
+indent_size = 2
+tab_width = 2
 
 # New line preferences
-end_of_line = crlf
-insert_final_newline = false
+end_of_line = lf
+insert_final_newline = true
 
 #### .NET Coding Conventions ####
 [*.{cs,vb}]
