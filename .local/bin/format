@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+set -e
+
+cd "${0%/*}" # set a consistent directory to be the location of this script
+cd ../..
+
+echo "Formatting F# files..."
+find . -type f \( -name '*.fs' -o -name '*.fsx' \) -not -path '*obj*' -not -path './packages/**' | xargs dotnet fantomas
+
+echo "Formatting C# files..."
+find . -type f -name '*.cs' -not -path '*obj*' | xargs dotnet csharpier
+
