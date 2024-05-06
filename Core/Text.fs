@@ -1,6 +1,7 @@
 namespace House.Imod.Cooking.Core
 
 open System
+open System.Text
 open FsToolkit.ErrorHandling
 
 type Text = string
@@ -37,6 +38,14 @@ module Text =
         Some s
 
   let bridge (text: Text) : string = text
+
+  let toCharArray (text: Text) = text.ToCharArray()
+
+  let remove (oldValue: char) (text: Text) = // TODO build a general replace function
+    text.ToCharArray()
+    |> Seq.filter (fun c -> c <> oldValue)
+    |> Seq.fold (fun (acc: StringBuilder) -> acc.Append) (StringBuilder())
+    |> string
 
   let bridgeMaybe (text: Text option) : string =
     match text with

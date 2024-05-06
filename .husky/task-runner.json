@@ -3,13 +3,13 @@
     {
       "name": "Run csharpier",
       "command": "dotnet",
-      "args": [ "csharpier", "" ],
+      "args": [ "csharpier", "${staged}" ],
       "include": [ "**/*.cs" ]
     },
     {
       "name": "Run fantomas",
       "command": "dotnet",
-      "args": [ "fantomas", "" ],
+      "args": [ "fantomas", "${staged}" ],
       "include": [ "**/*.fs", "**/*.fsx" ]
     },
     {
@@ -20,4 +20,3 @@
     }
   ]
 }
-

@@ -10,7 +10,7 @@
     <RootNameSpace>House.Imod.Cooking.Test</RootNameSpace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="UnitTest1.fs" />
+    <Compile Include="Domain\Menu\IngredientTests.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>

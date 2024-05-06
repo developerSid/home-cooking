@@ -14,8 +14,11 @@
     <Compile Include="BaseText.fs" />
     <Compile Include="Matcher.fs" />
     <Compile Include="Identity.fs" />
-    <Compile Include="Domain\Ingredient.fs" />
-    <Compile Include="Domain\Menu.fs" />
+    <Compile Include="Error\ErrorCode.fs" />
+    <Compile Include="Error\CommonError.fs" />
+    <Compile Include="Error\MenuError.fs" />
+    <Compile Include="Domain\Menu\Ingredient.fs" />
+    <Compile Include="Domain\Menu\Menu.fs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Protocol.Ext\Protocl.Ext.csproj" />
