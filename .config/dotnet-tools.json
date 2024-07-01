@@ -25,6 +25,12 @@
       "commands": [
         "husky"
       ]
+    },
+    "fsautocomplete": {
+      "version": "0.73.2",
+      "commands": [
+        "fsautocomplete"
+      ]
     }
   }
 }
